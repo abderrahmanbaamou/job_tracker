@@ -94,6 +94,11 @@ function Dashboard() {
               Dashboard
             </Link>
 
+            <Link to="/job-match"
+            className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg">
+                Job Match
+                </Link>
+                
             <Link
               to="/applications/add"
               className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"

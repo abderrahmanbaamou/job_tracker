@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import AddApplication from "./pages/AddApplication";
 import ApplicationDetails from "./pages/ApplicationDetails";
 import EditApplication from "./pages/EditApplication";
-
+import JobMatch from "./pages/jobMatch";
 function App() {
   return (
     <Routes>
@@ -18,6 +18,11 @@ function App() {
       <Route path="/register" element={<Register />} />
 
       <Route path="/dashboard" element={<Dashboard />} />
+
+      <Route
+  path="/job-match"
+  element={<JobMatch />}
+/>
 
       <Route
         path="/applications/add"

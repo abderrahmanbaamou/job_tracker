@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const mlRoutes = require("./routes/ml.routes");
 require("dotenv").config();
 
 require("./config/database");
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/ml", mlRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
