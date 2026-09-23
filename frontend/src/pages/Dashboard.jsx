@@ -87,36 +87,67 @@ function Dashboard() {
 
           <div className="flex gap-3">
 
-            <Link
-              to="/dashboard"
-              className="px-4 py-2 hover:bg-slate-800 rounded-lg"
-            >
-              Dashboard
-            </Link>
+  <Link
+    to="/dashboard"
+    className="px-4 py-2 hover:bg-slate-800 rounded-lg"
+  >
+    Dashboard
+  </Link>
 
-            <Link to="/job-match"
-            className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg">
-                Job Match
-                </Link>
-                
-            <Link
-              to="/applications/add"
-              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
-            >
-              + Application
-            </Link>
 
-            <button
-              onClick={() => {
-                localStorage.removeItem("token");
-                window.location.href = "/login";
-              }}
-              className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg"
-            >
-              Logout
-            </button>
+  <Link
+    to="/job-match"
+    className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg"
+  >
+    Job Match
+  </Link>
 
-          </div>
+
+  <Link
+    to="/cv-analyzer"
+    className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg"
+  >
+    CV Analyzer
+  </Link>
+
+
+  <Link
+    to="/recommendations"
+    className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg"
+  >
+    Recommendations
+  </Link>
+
+
+  <Link
+    to="/applications/add"
+    className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
+  >
+    + Application
+  </Link>
+
+
+  <button
+    onClick={() => {
+
+      localStorage.removeItem(
+        "token"
+      );
+
+      localStorage.removeItem(
+        "userSkills"
+      );
+
+      window.location.href =
+        "/login";
+
+    }}
+    className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg"
+  >
+    Logout
+  </button>
+
+</div>
         </div>
       </div>
 
