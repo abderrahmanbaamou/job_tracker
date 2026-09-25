@@ -13,6 +13,12 @@ import JobMatch from "./pages/jobMatch";
 import CVAnalyzer from "./pages/CVAnalyzer";
 import Recommendations from "./pages/Recommendations";
 
+import ProfessionalDashboard
+    from "./pages/professional/ProfessionalDashboard";
+import ProfessionalLayout from "./components/ProfessionalLayout";
+
+import AddJob
+    from "./pages/professional/AddJob";
 
 function App() {
 
@@ -76,12 +82,29 @@ function App() {
       />
 
 
+
       <Route
         path="/applications/:id/edit"
         element={
           <EditApplication />
         }
       />
+       <Route
+                path="/professional"
+                element={<ProfessionalLayout />}
+            >
+                <Route
+                    path="dashboard"
+                    element={<ProfessionalDashboard />}
+                />
+
+                
+
+                <Route
+                    path="jobs/add"
+                    element={<AddJob />}
+                />
+            </Route>
 
     </Routes>
 

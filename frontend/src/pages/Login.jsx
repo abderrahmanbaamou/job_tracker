@@ -30,27 +30,32 @@ function Login() {
         }
       );
 
-      const data = await response.json();
+     const data = await response.json();
 
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
+if (!response.ok) {
+    alert(data.message);
+    return;
+}
 
-      localStorage.setItem("token", data.token);
+localStorage.setItem("token", data.token);
 
-      alert("Login successful");
+localStorage.setItem(
+    "user",
+    JSON.stringify(data.user)
+);
 
-      navigate("/dashboard");
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert("Server error");
+if (data.user.role === "professional") {
+    navigate("/professional/dashboard");
+} else {
+    navigate("/dashboard");
 
     }
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
   };
+
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-6">

@@ -2,43 +2,72 @@ const express = require("express");
 
 const router = express.Router();
 
-const db =
-  require("../config/database");
+const {
+    createJob,
+    getMyJobs,
+    getAllJobs,
+    getJob,
+    updateJob,
+    deleteJob
+} = require("../controllers/job.controller");
+
+const {
+    authenticateToken
+} = require("../middleware/auth.middleware");
+
+const {
+    requireRole
+} = require("../middleware/role.middleware");
 
 
-
-router.get("/", async (req, res) => {
-
-  try {
-
-    const result = await db.query(
-      `
-      SELECT *
-      FROM jobs
-      ORDER BY created_at DESC
-      `
-    );
+// GET ALL JOBS
+router.get(
+    "/",
+    getAllJobs
+);
 
 
-    res.json(result.rows);
+// GET MY JOBS
+router.get(
+    "/my-jobs",
+    authenticateToken,
+    requireRole("professional"),
+    getMyJobs
+);
 
 
-  } catch (error) {
+// CREATE JOB
+router.post(
+    "/",
+    authenticateToken,
+    requireRole("professional"),
+    createJob
+);
 
-    console.error(
-      "JOBS ERROR:",
-      error
-    );
+
+// UPDATE JOB
+router.put(
+    "/:id",
+    authenticateToken,
+    requireRole("professional"),
+    updateJob
+);
 
 
-    res.status(500).json({
+// DELETE JOB
+router.delete(
+    "/:id",
+    authenticateToken,
+    requireRole("professional"),
+    deleteJob
+);
 
-      message:
-        "Error loading jobs",
 
-    });
-  }
-});
+// GET ONE JOB
+router.get(
+    "/:id",
+    getJob
+);
 
 
 module.exports = router;

@@ -3,44 +3,50 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  createApplication,
-  getApplications,
-  getApplication,
-  updateApplication,
-  deleteApplication,
+    createApplication,
+    getApplications,
+    getApplication,
+    updateApplication,
+    deleteApplication,
 } = require("../controllers/application.controller");
 
-const authenticateToken = require("../middleware/auth.middleware");
-
-
-router.get("/",authenticateToken,getApplications);
+const {
+    authenticateToken
+} = require("../middleware/auth.middleware");
 
 
 router.get(
-  "/:id",
-  authenticateToken,
-  getApplication
+    "/",
+    authenticateToken,
+    getApplications
+);
+
+
+router.get(
+    "/:id",
+    authenticateToken,
+    getApplication
 );
 
 
 router.post(
-  "/",
-  authenticateToken,
-  createApplication
+    "/",
+    authenticateToken,
+    createApplication
 );
 
 
 router.put(
-  "/:id",
-  authenticateToken,
-  updateApplication
+    "/:id",
+    authenticateToken,
+    updateApplication
 );
 
 
 router.delete(
-  "/:id",
-  authenticateToken,
-  deleteApplication
+    "/:id",
+    authenticateToken,
+    deleteApplication
 );
 
 
